@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+    databases:
+        image: postgres:11
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        environment: 
+            - POSTGRES_DB=rukeshdatabase
+            - POSTGRES_USER=rukeshshrestha
+            - POSTGRES_PASSWORD=rukeshpassword
+        
+            
+    web:
+        build: .
+        command: python /CP6/manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/CP6/
+        ports: 
+            - 8000:8000
+        environment: 
+            - ENVIRONMENT=development
+            - SECRET_KEY=django-insecure--omo9ug3nk&pw%p-5@zuig1u&$_=lbnduhd%%q1oh!h&puxyyg
+            - DEBUG=1
+            - STRIPT_TEST_PUBLISHABABLE_KEY=pk_test_51IzKIVSBGYJ0VWCs5wCCaEIXet7eyQVz9oozeU6lzIMHEcFxudkVGqKBHxqAo1nT3p9Jt7dEHldNxJx0BhnpNr5j00abJnBzw5
+            - STRIPT_TEST_SECRET_KEY=sk_test_51IzKIVSBGYJ0VWCsFvT002MdLIQQkTc3kuC85KEolFXmXt5HfiAnjxjpPTbqxWwXGVio6Up0qch7jnjnsW24QrIO00rXpuAsm4
+        depends_on: 
+            - databases
+
+volumes: 
+    postgres_data:
+

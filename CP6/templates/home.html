@@ -1,0 +1,22 @@
+{%extends '_base.html'%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/base.css'%}">
+{%block content%}
+<form class="form-inline mt-2 mt-md-0" action="{% url 'search' %}"
+method="get">
+<input name="q" class="form-control mr-sm-2" type="text" placeholder="Search"
+aria-label="Search">
+</form>
+<h1>
+    
+    Heelo there
+
+    <img class="images" src="{%static 'images/dfp_31.jpg'%}" alt="">
+</h1>
+
+
+{%endblock content%}
+
+{%block javascript%}
+<script src="{%static 'js/base.js'%}"></script>
+{%endblock javascript%}
